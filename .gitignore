@@ -1,0 +1,49 @@
+# Gradle
+
+.gradle/
+build/
+
+#java
+
+*.class
+
+# Intellij IDEA
+
+.idea/
+
+*.iml
+
+*.iws
+*.ipr
+
+
+
+# VS code
+
+.vscode/
+
+# Environment variables
+
+.env
+.env.*
+
+#logs
+
+*.logs
+
+#OS
+
+.DS_Store
+Thumbs.db
+
+# Temporary files
+
+*.tmp
+*.swp
+
+# Secrets
+
+*.pem
+*.key
+
+
