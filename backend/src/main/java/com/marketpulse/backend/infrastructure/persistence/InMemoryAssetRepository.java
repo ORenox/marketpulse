@@ -10,7 +10,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@Repository
+//@Repository
 public class InMemoryAssetRepository  implements AssetRepository {
 
     private final Map<Long, Asset> assets = new HashMap<>();
