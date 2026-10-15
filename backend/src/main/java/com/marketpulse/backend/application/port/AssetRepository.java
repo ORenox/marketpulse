@@ -8,5 +8,6 @@ public interface AssetRepository {
 
     Asset save(Asset asset);
     List<Asset> findAll();
+    boolean existsBySymbol(String symbol);
 
 }

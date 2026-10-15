@@ -36,4 +36,9 @@ public class AssetRepositoryAdapter implements AssetRepository {
                 .map(AssetPersistenceMapper::toDomain)
                 .toList();
     }
+
+    @Override
+    public boolean existsBySymbol(String symbol) {
+        return jpaAssetRepository.existsBySymbol(symbol);
+    }
 }

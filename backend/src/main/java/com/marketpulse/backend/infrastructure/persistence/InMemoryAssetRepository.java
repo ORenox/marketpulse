@@ -35,5 +35,10 @@ public class InMemoryAssetRepository  implements AssetRepository {
         return new ArrayList<>(assets.values());
     }
 
+    @Override
+    public boolean existsBySymbol(String symbol) {
+        return false;
+    }
+
 
 }

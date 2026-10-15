@@ -5,4 +5,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface JpaAssetRepository
         extends JpaRepository<AssetEntity, Long> {
+    boolean existsBySymbol(String symbol);
 }

@@ -2,6 +2,7 @@ package com.marketpulse.backend.application.service;
 
 import com.marketpulse.backend.application.port.AssetRepository;
 import com.marketpulse.backend.domain.model.Asset;
+import com.marketpulse.backend.domain.model.exception.AssetAlreadyExistsException;
 import org.springframework.stereotype.Service;
 
 
@@ -18,12 +19,15 @@ public class AssetService {
         this.assetRepository = assetRepository;
     }
     public Asset create(String symbol, String name) {
+
+        if(assetRepository.existsBySymbol(symbol)) {
+            throw new AssetAlreadyExistsException(symbol);
+        }
         Asset asset = new Asset(
                 null,
                 symbol,
                 name,
                 true);
-
         return assetRepository.save(asset);
     }
 

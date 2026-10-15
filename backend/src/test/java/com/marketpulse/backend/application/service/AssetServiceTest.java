@@ -3,6 +3,7 @@ package com.marketpulse.backend.application.service;
 import com.marketpulse.backend.application.port.AssetRepository;
 import com.marketpulse.backend.application.service.AssetService;
 import com.marketpulse.backend.domain.model.Asset;
+import com.marketpulse.backend.domain.model.exception.AssetAlreadyExistsException;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -79,5 +80,22 @@ class AssetServiceTest {
         assertEquals("ETHUSDT", result.get(1).getSymbol());
 
         verify(assetRepository).findAll();
+    }
+
+    @Test
+    void shouldRejectDuplicateAsset() {
+
+        when(assetRepository.existsBySymbol("BTCUSDT"))
+                .thenReturn(true);
+
+        assertThrows(
+                AssetAlreadyExistsException.class,
+                () -> assetService.create(
+                        "BTCUSDT",
+                        "Bitcoin / USDT"
+                )
+        );
+
+        verify(assetRepository, never()).save(any());
     }
 }
