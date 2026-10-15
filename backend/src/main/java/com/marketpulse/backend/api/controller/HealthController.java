@@ -11,7 +11,7 @@ public class HealthController {
 
     @GetMapping
     public HealthResponse health() {
-        return new HealthResponse("Up", "marketpulse-backend");
+        return new HealthResponse("UP", "marketpulse-backend");
     }
 
 }
